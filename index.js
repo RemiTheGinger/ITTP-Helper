@@ -49,12 +49,14 @@ client.on('guildMemberRemove', member => {
     updateMemberCount(member.guild);
 });
 
-//!! ROLE CONFINEMENT !!
+//On vocal join event
 client.on('voiceStateUpdate', (oldMember, newMember) => {
     let oldUserChannel = oldMember.voiceChannel;
     let newUserChannel = newMember.voiceChannel;
 
+    
     if(!oldUserChannel && newUserChannel){
+        //!! ROLE CONFINEMENT !!
         if(!newMember.roles.some(role => role.id === confinementrole)){
             newMember.addRole(newMember.guild.roles.find(role => role.id === confinementrole));
         }
