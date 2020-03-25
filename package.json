@@ -1,0 +1,19 @@
+{
+  "name": "ittp-helper",
+  "version": "1.0.0",
+  "description": "A helper application for the discord server It's time To Play",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RémiTheGinger",
+  "license": "ISC",
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "cron": "^1.8.2",
+    "discord.js": "^11.5.1",
+    "eslint": "^5.16.0",
+    "ffmpeg-binaries": "^4.0.0",
+    "node-opus": "^0.3.3"
+  }
+}
