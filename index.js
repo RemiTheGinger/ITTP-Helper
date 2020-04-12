@@ -3,7 +3,7 @@
 const fs = require('fs'); //File reader and writer Library
 const Discord = require('discord.js'); //Dicord API
 const CronJob = require('cron').CronJob;
-const { prefix, token, whitelistch, infoch, initrole, countch, modorole, confinementrole } = require("./config.json"); //User set Variables
+const { prefix, token, whitelistch, infoch, confirmedrole, initrole, countch, modorole, confinementrole } = require("./config.json"); //User set Variables
 
 const client = new Discord.Client(); 
 client.commands = new Discord.Collection();
@@ -57,7 +57,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     
     if(!oldUserChannel && newUserChannel){
         //!! ROLE CONFINEMENT !!
-        if(!newMember.roles.some(role => role.id === confinementrole)){
+        if(!newMember.roles.some(role => role.id === confinementrole) && newMember.roles.some(role => role.id === confirmedrole)){
             newMember.addRole(newMember.guild.roles.find(role => role.id === confinementrole));
         }
     }
