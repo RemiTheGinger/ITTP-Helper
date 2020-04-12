@@ -7,20 +7,26 @@
 */
 module.exports = {
     name: "mj",
-    finished: false,
+    finished: true,
     use: "mj",
     description: 'Te rendre MJ sur le serveur',
     modoOnly: false,
     execute(message, args){
-        const { mjrole } = require("../config.json");
+        const { infoch, mjrole } = require("../config.json");
 
         const mj_role = message.guild.find(role => role.id === mjrole);
+        const infoch = message.guild.find(channel => channel.id === infoch);
 
         if(message.member.roles.some(role => role === mj_role)){
-            message.channel.send("Tu as déja le rôle MJ");
+            message.channel.send("Tu as déja le rôle MJ, vas tuez des joueurs !");
         } else{
-            message.member.addRole(mj_role);
-            message.channel.send("Tu est devenu MJ");
+            infoch.send(message.member.nickname + " veut devenir MJ")
+                .then(function(message){
+                    message.react('👍');
+                    message.react('👎');
+                }).catch(function (message){
+                    //Something
+                });
         }
     }
 }
